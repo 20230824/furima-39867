@@ -27,29 +27,38 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| name               | string | null: false |
-| email              | string | null: false |
-| password 　　　　　　| string | null: false |
+| Column             | Type   | Options      |
+| ------------------ | ------ | -----------  |
+| nickname           | string | null: false  |
+| email              | string | unique: true |
+| encrypted_password | string | null: false  |
+| last_name          | string | null: false  |
+| first_name         | string | null: false  |
+| last_name_kana     | string | null: false  |
+| first_name_kana    | string | null: false  |
+| birthday           | string | null: false  |
 
 ### Association
 
 - has_many :items
 - has_many :orders
-- has_many :shipping
 
 ## items テーブル
 
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| user   | string | null: false |
-| image  | string | null: false |
-| items  | string | null: false |
-| title  | string | null: false |
-| text   | string | null: false |
-| price  | string | null: false |
-
+| Column      | Type    | Options                        |
+| ----------- | ------- | ------------------------------ |
+| user_id     | string  | null: false, foreign_key: true |
+| items       | string  | null: false                    | 
+| title       | string  | null: false                    |
+| text        | string  | null: false                    |
+| price       | integer | null: false                    |
+| image       | string  | null: false                    |
+｜ explanation | string  | null: false                    |
+｜ category   | string  | null: false                    |
+｜ condition  | string  | null: false                    |
+| charge      | string  | null: false                    |
+| area        | string  | null: false                    |
+| day|string  | string  | null: false                    |
 
 ### Association
 
@@ -59,29 +68,32 @@ Things you may want to cover:
 
 ## orders テーブル
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| image  | references | null: false, foreign_key: true |
-| card   | references | null: false, foreign_key: true |
-| items  | references | null: false, foreign_key: true |
-| text   | references | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| image       | references | null: false, foreign_key: true |
+| card        | references | null: false, foreign_key: true |
+| items_id    | references | null: false, foreign_key: true |
+| explanation | references | null: false, foreign_key: true |
+| user_id     | references | null: false, foreign_key: true |
+| post        | references | null: false, foreign_key: true |
+| ken         | references | null: false, foreign_key: true |
+| village     | references | null: false, foreign_key: true |
+| address     | references | null: false, foreign_key: true |
+｜ telephone  | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :items
-- belongs_to :orders
+- belongs_to :item
+- belongs_to :order
 - belongs_to :shipping
 
 ## shipping テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| text    | string     |                                |
 | buy     | references | null: false, foreign_key: true |
 | name    | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :items
 - belongs_to :orders
-- belongs_to :shipping
