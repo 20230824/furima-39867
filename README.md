@@ -47,38 +47,38 @@ Things you may want to cover:
 
 | Column        | Type    | Options                        |
 | ------------- | ------- | ------------------------------ |
-| user          | references | null: false, foreign_key: true | 
-| item          | string  | null: false                    |  
+| user          | references | null: false, foreign_key: true |  
 | title         | string  | null: false                    |  
 | description   | text    | null: false                    | 
 | price         | integer | null: false                    |  
 | category_id     | integer  | null: false                    |  
 | condition_id     | integer  | null: false                    | 
 | shipping_cost_id | integer  | null: false                    |  
-| area_id          | integer  | null: false                    |  
+| village_id          | integer  | null: false                    |  
 | days_id          | integer  | null: false                    |  
 
 ### Association
 
+- belongs_to :user 
 - has_one :shipping
+
 
 ## orders テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | post        | string     | null: false                    |  
-| area         | string     | null: false                    |  
+| ken         | string     | null: false                    |  
 | village     | string     | null: false                    |  
-| address     | string     | null: false                    |  
-| explanation | string     | null: false, foreign_key: true   |  
+| email       | string     | null: false                    |  
+| explanation | string     | null: false                    |  
 | telephone   | string     | null: false                    |  
 | user　　     | references | null: false, foreign_key: true |  
 
 
 ### Association
 
-- belongs_to :item
-- has_one :order
+- belongs_to :shipping
 
 ## shipping テーブル
 
@@ -88,4 +88,5 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_one :orders
+- has_one : item
+- belongs_to :orders
