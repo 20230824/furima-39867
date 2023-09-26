@@ -30,7 +30,7 @@ Things you may want to cover:
 | Column             | Type   | Options      |
 | ------------------ | ------ | -----------  |
 | nickname           | string | null: false  |
-| email              | string | unique: true |
+| email              | string | null: false  |
 | encrypted_password | string | null: false  |
 | last_name          | string | null: false  |
 | first_name         | string | null: false  |
@@ -45,47 +45,43 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| user_id     | string  | null: false, foreign_key: true |
-| items       | string  | null: false                    | 
-| title       | string  | null: false                    |
-| text        | string  | null: false                    |
-| price       | integer | null: false                    |
-| image       | string  | null: false                    |
-｜ explanation | string  | null: false                    |
-｜ category   | string  | null: false                    |
-｜ condition  | string  | null: false                    |
-| charge      | string  | null: false                    |
-| area        | string  | null: false                    |
-| day|string  | string  | null: false                    |
+| Column        | Type    | Options                        |
+| ------------- | ------- | ------------------------------ |
+| user_id       | integer | null: false, foreign_key: true | 
+| item          | string  | null: false                    |  
+| title         | string  | null: false                    |  
+| description   | string  | null: false                    | 
+| price         | integer | null: false                    |  
+| image         | string  | null: false                    | 
+| category      | string  | null: false                    |  
+| condition     | string  | null: false                    | 
+| shipping_cost | string  | null: false                    |  
+| area          | string  | null: false                    |  
+| days          | string  | null: false                    |  
 
 ### Association
 
-- has_many :items
-- has_many :orders
+- has_one :items
+- has_one :orders
 - has_many :shipping
 
 ## orders テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| image       | references | null: false, foreign_key: true |
-| card        | references | null: false, foreign_key: true |
-| items_id    | references | null: false, foreign_key: true |
-| explanation | references | null: false, foreign_key: true |
-| user_id     | references | null: false, foreign_key: true |
-| post        | references | null: false, foreign_key: true |
-| ken         | references | null: false, foreign_key: true |
-| village     | references | null: false, foreign_key: true |
-| address     | references | null: false, foreign_key: true |
-｜ telephone  | references | null: false, foreign_key: true |
+| post        | string     | null: false                    |  
+| ken         | string     | null: false                    |  
+| village     | string     | null: false                    |  
+| address     | string     | null: false                    |  
+| explanation | string     | null: false                    |  
+| telephone   | string     | null: false                    |  
+| user_id     | references | null: false, foreign_key: true |  
+
 
 ### Association
 
 - belongs_to :item
-- belongs_to :order
-- belongs_to :shipping
+- has_many :order
 
 ## shipping テーブル
 
