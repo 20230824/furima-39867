@@ -54,7 +54,7 @@ Things you may want to cover:
 | category_id     | integer  | null: false                    |  
 | condition_id     | integer  | null: false                    | 
 | shipping_cost_id | integer  | null: false                    |  
-| village_id          | integer  | null: false                    |  
+| prefecture_id    | integer  | null: false                    | 
 | days_id          | integer  | null: false                    |  
 
 ### Association
@@ -73,14 +73,16 @@ Things you may want to cover:
 | email       | string     | null: false                    |  
 | explanation | string     | null: false                    |  
 | telephone   | string     | null: false                    |  
-| user　　     | references | null: false, foreign_key: true |  
+| user　　     | references | null: false, foreign_key: true | 
+| prefecture_id | integer | null: false                     |
+| shipping_id  | references | null: false, foreign_key: true | 
 
 
 ### Association
 
 - belongs_to :shipping
 
-## shipping テーブル
+## shippings テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -88,5 +90,6 @@ Things you may want to cover:
 
 ### Association
 
-- has_one : item
-- belongs_to :orders
+- belongs_to :item  
+- belongs_to :order  
+- belongs_to :user  
