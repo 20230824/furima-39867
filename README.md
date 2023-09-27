@@ -73,7 +73,7 @@ Things you may want to cover:
 | explanation | string     | null: false                    |  
 | telephone   | string     | null: false                    |  
 | prefecture_id | integer | null: false                     |
-| shipping_id  | references | null: false, foreign_key: true | 
+| today_id      | integer  | null: false                    |
 
 
 ### Association
