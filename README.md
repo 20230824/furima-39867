@@ -70,11 +70,9 @@ Things you may want to cover:
 | post        | string     | null: false                    |  
 | ken         | string     | null: false                    |  
 | village     | string     | null: false                    |  
-| email       | string     | null: false                    |  
 | explanation | string     | null: false                    |  
 | telephone   | string     | null: false                    |  
-| prefecture_id | integer | null: false                     |
-| shipping_id  | references | null: false, foreign_key: true | 
+
 
 
 ### Association
