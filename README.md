@@ -30,7 +30,7 @@ Things you may want to cover:
 | Column             | Type   | Options      |
 | ------------------ | ------ | -----------  |
 | nickname           | string | null: false  |
-| email              | string | null: false  |
+| email              | string | null: false,unique: true  |
 | encrypted_password | string | null: false  |
 | last_name          | string | null: false  |
 | first_name         | string | null: false  |
@@ -73,7 +73,6 @@ Things you may want to cover:
 | email       | string     | null: false                    |  
 | explanation | string     | null: false                    |  
 | telephone   | string     | null: false                    |  
-| user　　     | references | null: false, foreign_key: true | 
 | prefecture_id | integer | null: false                     |
 | shipping_id  | references | null: false, foreign_key: true | 
 
@@ -86,10 +85,11 @@ Things you may want to cover:
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
+| user | references | null: false, foreign_key: true |
+| item | references | null: false, foreign_key: true | 
 
 ### Association
 
 - belongs_to :item  
-- belongs_to :order  
+- has_one :order  
 - belongs_to :user  
