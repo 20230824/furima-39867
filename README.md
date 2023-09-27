@@ -72,6 +72,7 @@ Things you may want to cover:
 | village     | string     | null: false                    |  
 | explanation | string     | null: false                    |  
 | telephone   | string     | null: false                    |  
+| prefecture_id | integer | null: false                     |
 
 
 
