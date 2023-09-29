@@ -72,8 +72,8 @@ Things you may want to cover:
 | village     | string     | null: false                    |  
 | explanation | string     | null: false                    |  
 | telephone   | string     | null: false                    |  
-| prefecture_id | integer | null: false                     |
-| today_id      | integer  | null: false                    |
+| prefecture_id | integer  | null: false                    |
+| orders_id      | integer  | null: false                    |
 
 
 ### Association
