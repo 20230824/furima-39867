@@ -74,7 +74,7 @@ Things you may want to cover:
 | telephone     | string     | null: false                    |
 | building      | string     |                                |
 | prefecture_id | integer    | null: false                    |
-| shippings     | references | null: false, foreign_key: true |
+| shipping      | references | null: false, foreign_key: true |
 
 
 ### Association
