@@ -86,9 +86,9 @@ RSpec.describe Item, type: :model do
       end
 
       it '価格は全角数字では登録できない' do
-        @item.price = ''
+        @item.price = '１２３４５６７'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank", "Price is not a number")
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
     end
   end
