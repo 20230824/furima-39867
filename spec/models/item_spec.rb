@@ -32,33 +32,33 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリー(---)では登録できない' do
-        @item.category_id = ''
+        @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category is not a number")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
 
       it '商品の状態(---)では登録できない' do
-        @item.condition_id = ''
+        @item.condition_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition is not a number")
+        expect(@item.errors.full_messages).to include("Condition must be other than 1")
       end
 
       it '配送料負担(---)では登録できない' do
-        @item.shipping_cost_id = ''
+        @item.shipping_cost_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping cost is not a number")
+        expect(@item.errors.full_messages).to include("Shipping cost must be other than 1")
       end
 
       it '発送元の地域(---)では登録できない' do
-        @item.prefecture_id = ''
+        @item.prefecture_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture is not a number")
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
 
       it '発送日数(---)では登録できない' do
-        @item.today_id = ''
+        @item.today_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Today is not a number")
+        expect(@item.errors.full_messages).to include("Today must be other than 1")
       end
 
       it '価格の表記がない場合は登録できない' do
@@ -77,6 +77,18 @@ RSpec.describe Item, type: :model do
         @item.price = '10000000'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+
+      it '価格がuserが紐づいていないと登録できない' do
+        item = Item.new(title: "Sample Title", description: "Sample Description", price: 500)
+        expect(item).to be_invalid
+        expect(item.errors[:user]).to include("must exist")
+      end
+
+      it '価格は全角数字では登録できない' do
+        @item.price = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price can't be blank", "Price is not a number")
       end
     end
   end
