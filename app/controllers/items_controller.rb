@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+  end
+
   def update
     if @item.update(item_params)
       redirect_to item_path(@item)
@@ -32,7 +35,14 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
+  def destroy
+    item = Item.find(params[:id])
+    if user_signed_in? && current_user.id == item.user_id
+      item.destroy
+      redirect_to root_path
+    else
+      redirect_to item_path
+    end
   end
 
   private
