@@ -63,25 +63,7 @@ Things you may want to cover:
 - belongs_to :user 
 - has_one :shipping
 
-
 ## orders テーブル
-
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| post          | string     | null: false                    |
-| village       | string     | null: false                    |
-| explanation   | string     | null: false                    |
-| telephone     | string     | null: false                    |
-| building      | string     |                                |
-| prefecture_id | integer    | null: false                    |
-| shipping      | references | null: false, foreign_key: true |
-
-
-### Association
-
-- belongs_to :shipping
-
-## shippings テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -92,5 +74,23 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :item  
-- has_one :order  
-- belongs_to :user  
+- has_one :shipping  
+- belongs_to :user 
+
+
+## shippings テーブル
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| post          | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| village       | string     | null: false                    |
+| explanation   | string     | null: false                    |
+| building      | string     |                                |
+| telephone     | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :order
