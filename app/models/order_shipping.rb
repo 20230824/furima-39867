@@ -7,7 +7,7 @@ class OrderShipping
     validates :prefecture_id
     validates :village
     validates :explanation
-    validates :telephone
+    validates :telephone, format: { with: /\A\d{10,11}\z/}
     validates :item_id
     validates :user_id
     validates :token
